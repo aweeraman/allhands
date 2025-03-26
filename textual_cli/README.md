@@ -5,6 +5,7 @@ A simple command-line interface built with the Python Textual framework.
 ## Features
 
 - `/hello` command: Displays a greeting message
+- `/help` command: Shows available commands
 - `/exit` command: Exits the application
 
 ## Requirements
@@ -28,7 +29,8 @@ python cli_app.py
 
 Once the application is running:
 1. Type `/hello` and press Enter to see a greeting
-2. Type `/exit` and press Enter to exit the application
+2. Type `/help` and press Enter to see available commands
+3. Type `/exit` and press Enter to exit the application
 
 ## Project Structure
 
