@@ -45,7 +45,7 @@ class TextualCLI(App):
         log = self.query_one("#log", RichLog)
         log.write("Welcome to TextualCLI!")
         log.write("Available commands:")
-        log.write("  /hello - Display a greeting")
+        log.write("  /hello - Display a greeting message")
         log.write("  /help  - Show available commands")
         log.write("  /exit  - Exit the application")
         log.write("\nType a command and press Enter.")
