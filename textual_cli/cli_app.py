@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 A simple CLI application using Textual framework.
-Implements /hello and /exit commands.
+Implements /hello, /help, and /exit commands.
 """
 
 from textual.app import App, ComposeResult
@@ -38,7 +38,7 @@ class TextualCLI(App):
         """Create child widgets for the app."""
         with Container():
             yield RichLog(id="log")
-            yield Input(placeholder="Type a command (e.g. /hello, /exit)", id="command_input")
+            yield Input(placeholder="Type a command (e.g. /hello, /help, /exit)", id="command_input")
 
     def on_mount(self) -> None:
         """Called when the app is mounted."""
@@ -46,6 +46,7 @@ class TextualCLI(App):
         log.write("Welcome to TextualCLI!")
         log.write("Available commands:")
         log.write("  /hello - Display a greeting")
+        log.write("  /help  - Show available commands")
         log.write("  /exit  - Exit the application")
         log.write("\nType a command and press Enter.")
         
@@ -63,13 +64,20 @@ class TextualCLI(App):
         # Process commands
         if command == "/hello":
             log.write("Hello, world! 👋")
+        elif command == "/help":
+            log.write("Available commands:")
+            log.write("  /hello - Display a greeting")
+            log.write("  /help  - Show this help message")
+            log.write("  /exit  - Exit the application")
         elif command == "/exit":
             log.write("Exiting application...")
             self.exit()
         elif command.startswith("/"):
             log.write(f"Unknown command: {command}")
+            log.write("Type /help to see available commands")
         else:
             log.write("Not a command. Commands start with '/'")
+            log.write("Type /help to see available commands")
         
         # Clear the input field
         event.input.value = ""
